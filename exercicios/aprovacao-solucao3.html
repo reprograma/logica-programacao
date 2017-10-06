@@ -1,0 +1,121 @@
+<!-- HTML -->
+<h1>Validação de aprovação - Solução 3</h1>
+<form onsubmit="return verificaAprovacao()">
+    <label>Nota1:</label>
+    <input id="nota1" type="text"/>
+    
+    <br>
+    
+    <label>Nota2:</label>
+    <input id="nota2" type="text"/>
+
+    <br>
+
+    <label>Nota3:</label>
+    <input id="nota3" type="text"/>
+
+    <br><br>
+
+    <button type="submit">Verificar</button>
+</form>
+<p id="mensagem"></p>
+
+<!-- JAVASCRIPT -->
+<script>
+    function verificaAprovacao() {
+        var nota1 = document.getElementById("nota1").value;
+        var nota2 = document.getElementById("nota2").value;
+        var nota3 = document.getElementById("nota3").value;
+        var paragrafoMensagem = document.getElementById("mensagem");
+
+        if (nota1 == "" || nota2 == "" || nota3 == "") {
+            paragrafoMensagem.textContent = "Preencha todos os campos.";
+            return false;
+        }
+
+        nota1 = parseFloat(nota1);
+        nota2 = parseFloat(nota2);
+        nota3 = parseFloat(nota3);
+        if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3)) {
+            paragrafoMensagem.textContent = "Preencha somente números.";
+            return false;
+        }
+
+        if (nota1 < 0 || nota2 < 0 || nota3 < 0) {
+            paragrafoMensagem.textContent = "Preencha números positivos.";
+            return false;
+        }
+
+        var media = (nota1 + nota2 + nota3) / 3;
+        if (media >= 6) {
+            paragrafoMensagem.textContent = "Aprovado";
+            return false;
+        }
+
+        paragrafoMensagem.textContent = "Reprovado";
+        return false;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // function verificaAprovacao() {
+    //     // entrada
+    //     var inputNota1 = document.getElementById("nota1");
+    //     var inputNota2 = document.getElementById("nota2");
+    //     var inputNota3 = document.getElementById("nota3");
+
+    //     var nota1 = inputNota1.value;
+    //     var nota2 = inputNota2.value;
+    //     var nota3 = inputNota3.value;
+
+    //     var paragrafoMensagem = document.getElementById("mensagem");
+
+    //     // processamento
+    //     if (nota1 == "" || nota2 == "" || nota3 == "") {
+    //         // saida
+    //         paragrafoMensagem.textContent = "Preencha todos os campos.";
+    //         return false;
+    //     }
+
+    //     if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3)) {
+    //         // saida
+    //         paragrafoMensagem.textContent = "Digite somente números.";
+    //         return false;
+    //     }
+
+    //     nota1 = parseFloat(nota1);
+    //     nota2 = parseFloat(nota2);
+    //     nota3 = parseFloat(nota3);
+    //     if (nota1 < 0 || nota2 < 0 || nota3 < 0) {
+    //         // saida
+    //         paragrafoMensagem.textContent = "Digite números positivos.";
+    //         return false;
+    //     }
+
+    //     var media = (nota1 + nota2 + nota3) / 3;
+
+    //     if (media >= 6) {
+    //         paragrafoMensagem.textContent = "Aluno aprovado! A média dele é: " + media + ".";
+    //     } else {
+    //         paragrafoMensagem.textContent = "Aluno reprovado! A média dele é: " + media + ".";
+    //     }
+
+    //     return false;
+    // }
+</script>

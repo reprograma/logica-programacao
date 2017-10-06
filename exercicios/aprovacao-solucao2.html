@@ -1,0 +1,49 @@
+<!-- HTML -->
+<h1>Validação de aprovação - Solução 2</h1>
+<form onsubmit="return verificaAprovacao()">
+    <label>Nota1:</label>
+    <input id="nota1" type="text"/>
+    
+    <br>
+    
+    <label>Nota2:</label>
+    <input id="nota2" type="text"/>
+
+    <br>
+
+    <label>Nota3:</label>
+    <input id="nota3" type="text"/>
+
+    <br><br>
+
+    <button type="submit">Verificar</button>
+</form>
+<p id="mensagem"></p>
+
+<!-- JAVASCRIPT -->
+<script>
+    function verificaAprovacao() {
+        var nota1 = document.getElementById("nota1").value;
+        var nota2 = document.getElementById("nota2").value;
+        var nota3 = document.getElementById("nota3").value;
+        var paragrafoMensagem = document.getElementById("mensagem");
+
+        if (nota1 == "" || nota2 == "" || nota3 == "") {
+            paragrafoMensagem.textContent = "Preencha todos os campos.";
+        } else if (isNaN(nota1 = parseFloat(nota1)) || isNaN(nota2 = parseFloat(nota2)) || isNaN(nota3 = parseFloat(nota3))) {
+            paragrafoMensagem.textContent = "Preencha somente números.";
+        } else if (nota1 < 0 || nota2 < 0 || nota3 < 0) {
+            paragrafoMensagem.textContent = "Preencha somente positivos.";
+        } else {
+            var media = (nota1 + nota2 + nota3) / 3;
+
+            if (media >= 6) {
+                paragrafoMensagem.textContent = "Aprovado.";
+            } else {
+                paragrafoMensagem.textContent = "Reprovado.";
+            }
+        }
+
+        return false;
+    }
+</script>
