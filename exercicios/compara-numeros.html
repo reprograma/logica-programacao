@@ -1,0 +1,68 @@
+<h1>Função para comparar</h1>
+<form onsubmit="return responder()">
+    <label for="num1">Num1:</label>
+    <input id="num1" type="text">
+
+    <br>
+
+    <label for="">Num2:</label>
+    <input id="num2" type="text">
+
+    <br><br>
+
+    <button type="submit">Responder</button>
+</form>
+
+<p id="mensagem"></p>
+
+<script>
+    function responder() {
+        var num1 = document.getElementById("num1").value;
+        var num2 = document.getElementById("num2").value;
+        var paragrafo = document.getElementById("mensagem");
+
+        if (estaVazio(num1, num2)) {
+            paragrafo.textContent = "Preencha todos os campos.";
+            return false;
+        }
+
+        num1 = parseInt(num1);
+        num2 = parseInt(num2);
+        if (ehNaoNumero(num1, num2)) {
+            paragrafo.textContent = "Preencha somente números.";
+            return false;
+        }
+
+        if (ehNumeroNegativo(num1, num2)) {
+            paragrafo.textContent = "Os número deve ser positivos.";
+            return false;
+        }
+
+        paragrafo.textContent = comparaNumeros(num1, num2);
+        return false;
+    }
+
+    function estaVazio(num1, num2) {
+        return num1 == "" || num2 == "";
+    }
+
+    function ehNaoNumero(num1, num2) {
+        return isNaN(num1) || isNaN(num2);
+    }
+
+    function ehNumeroNegativo(num1, num2) {
+        return num1 < 0 || num2 < 0;
+    }
+
+    function comparaNumeros(num1, num2) {
+        if (num1 > num2) {
+            return "Num1 é maior que Num2.";
+        } 
+        
+        if (num1 < num2) {
+            return "Num1 é menor que Num2.";
+        } 
+
+        return "Os números são iguais!"
+    }
+</script>

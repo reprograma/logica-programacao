@@ -22,6 +22,11 @@
 
 <!-- JAVASCRIPT -->
 <script>
+    function calculaMedia(xpto1, xpto2, xpto3) {
+        var media = (xpto1 + xpto2 + xpto3) / 3;
+        return media;
+    }
+
     function verificaAprovacao() {
         var nota1 = document.getElementById("nota1").value;
         var nota2 = document.getElementById("nota2").value;
@@ -46,7 +51,7 @@
             return false;
         }
 
-        var media = (nota1 + nota2 + nota3) / 3;
+        var media = (num1 + num2 + num3) / 3;
         if (media >= 6) {
             paragrafoMensagem.textContent = "Aprovado";
             return false;

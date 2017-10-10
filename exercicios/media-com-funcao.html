@@ -1,0 +1,63 @@
+<h1>Calculadora de média</h1>
+<form onsubmit="return responder()">
+    <label for="num1">Nota1:</label>
+    <input id="num1" type="text">
+
+    <br>
+
+    <label for="num2">Nota2:</label>
+    <input id="num2" type="text">
+
+    <br><br>
+
+    <button type="submit">Responder</button>
+</form>
+
+<p id="mensagem"></p>
+
+
+<script>
+    function responder() {
+        var num1 = document.getElementById("num1").value;
+        var num2 = document.getElementById("num2").value;
+        var paragrafo = document.getElementById("mensagem");
+
+        if (estaVazio(num1, num2)) {
+            paragrafo.textContent = "Preencha todos os campos.";
+            return false;
+        }
+
+        num1 = parseInt(num1);
+        num2 = parseInt(num2);
+        if (ehNaoNumero(num1, num2)) {
+            paragrafo.textContent = "Preencha somente números.";
+            return false;
+        }
+
+        if (ehNumeroNegativo(num1, num2)) {
+            paragrafo.textContent = "Os número deve ser positivos.";
+            return false;
+        }
+
+        var resultado = calculaMedia(num1, num2);
+        paragrafo.textContent = "O resultado é: " + resultado;
+        return false;
+    }
+
+    function estaVazio(num1, num2) {
+        return num1 == "" || num2 == "";
+    }
+
+    function ehNaoNumero(num1, num2) {
+        return isNaN(num1) || isNaN(num2);
+    }
+
+    function ehNumeroNegativo(num1, num2) {
+        return num1 < 0 || num2 < 0;
+    }
+
+    function calculaMedia(num1, num2) {
+        var conta = (num1 + num2) / 2;
+        return conta;
+    }
+</script>
